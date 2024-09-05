@@ -9,20 +9,9 @@ class Solution
     public:
     //Function to check if a string can be obtained by rotating
     //another string by exactly 2 places.
-    bool isRotated(string str1, string str2)
+    bool fun(string str1, string str2,int i,int j)
     {
         int x=1;
-        int z=1;
-         int n1 = str1.size(), n2 = str2.size();
-        if(n1!=n2)
-        {
-            return false;
-        }
-        if(n1 <= 2) return (str1 == str2);
-        
-        int i=2;
-        int j=0;
-        
          while(i<str1.length())
          {
              if(str1[i]!=str2[j])
@@ -50,37 +39,23 @@ class Solution
              i++;
              j++;
          }
+        }
+        return x;
     }
-         int l=str1.size()-2;
-         int m=0;
+    bool isRotated(string str1, string str2)
+    {
+        int x=1;
+        int z=1;
+         int n1 = str1.size(), n2 = str2.size();
+        if(n1!=n2)
+        {
+            return false;
+        }
+        if(n1 <= 2) return (str1 == str2);
         
-         while(l<str1.length())
-         {
-             if(str1[l]!=str2[m])
-             {
-                 z=0;
-                 break;
-             }
-             else
-             {
-                 l++;
-                 m++;
-             }
-         }
+         x=fun(str1,str2,2,0);
+         z=fun(str1,str2, str1.size()-2,0);
        
-         if(z!=0){
-               l=0;
-         while(m<str2.length())
-         {
-              if(str1[l]!=str2[m])
-             {
-                 z=0;
-                 break;
-             }
-             l++;
-             m++;
-         }
-         }
          return (x||z);
     }
 

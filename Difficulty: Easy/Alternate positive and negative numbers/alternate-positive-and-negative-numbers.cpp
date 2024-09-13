@@ -11,44 +11,46 @@ class Solution {
 
     void rearrange(vector<int> &arr)
     {
-       vector<int>ans;
-        vector<int>pos;
-        vector<int>neg;
+        vector<int> ap;
+        vector<int> np;
+        
         for(int i=0;i<arr.size();i++)
         {
-            if(arr[i]>=0)
+            if(arr[i]<0)
             {
-                pos.push_back(arr[i]);
-                continue;
+                np.push_back(arr[i]);
+                
             }
-             if(arr[i]<0)
-            {
-                neg.push_back(arr[i]);
+            else{
+                
+            ap.push_back(arr[i]);
             }
         }
-        int a=0;
-        int b=0;
         int i=0;
-       while(a<pos.size()&&b<neg.size())
-       {    
-          arr[i]=pos[a];
-            i++;
-            a++;
-           arr[i]=neg[b];
-             b++;
-             i++;
-       }
-        while(a<pos.size())
-        {
-             arr[i]=pos[a];
-              a++;
-              i++;
-        }
-         while(b<neg.size())
-        {
-             arr[i]=neg[b];
-             b++;
-             i++;
+        int j=0;
+        int k=0;
+       
+           while(i<ap.size()&&j<np.size())
+           {
+               arr[k]=ap[i];
+               i++;
+               k++;
+               arr[k]=np[j];
+               j++;
+               k++;
+           }
+           while(i<ap.size())
+           {
+             arr[k]=ap[i];
+               i++;
+               k++;
+           }
+            while(j<np.size())
+           {
+               arr[k]=np[j];
+               j++;
+               k++;
+           
         }
     }
     
@@ -60,10 +62,6 @@ int main() {
     int t;
     cin >> t;
     cin.ignore();
-    if (t == 1) {
-        cout << -1 << endl;
-        return 0;
-    }
     while (t--) {
         vector<int> arr;
         string input;

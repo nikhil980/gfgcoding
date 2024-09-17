@@ -11,6 +11,7 @@ class Solution
     //Function to check if brackets are balanced or not.
     bool ispar(string x)
     {
+       
         if(x.length()<=1)
         {
             return false;
@@ -65,7 +66,6 @@ class Solution
         }
         
     }
-
 };
 
 //{ Driver Code Starts.

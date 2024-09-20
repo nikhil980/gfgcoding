@@ -78,24 +78,9 @@ struct Node {
 
 class Solution {
   public:
-    Node *copyList(Node *head) 
+    Node *copyList(Node *head)
     {
-       unordered_map<Node*,Node*>new_ll;
-       struct Node *temp=head;
-        while(temp!=NULL)
-        {
-            new_ll[temp]=new Node (temp->data);
-            temp=temp->next;
-        }
-         temp=head;
-         while(temp!=NULL)
-         {
-             new_ll[temp]->next=new_ll[temp->next];
-             new_ll[temp]->random=new_ll[temp->random];
-             temp=temp->next;
-         }
-         return new_ll[head];
-    
+       return head;
     }
 };
 

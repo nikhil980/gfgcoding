@@ -10,9 +10,10 @@ using namespace std;
 
 class Solution {
   public:
-    int totalCount(int k, vector<int>& arr)
+    int totalCount(int k, vector<int>& arr) 
     {
-        int ans=0;
+        // code here
+            int ans=0;
         for(int i=0;i<arr.size();i++)
         {
             int x=ceil((float)arr[i]/(float)k);

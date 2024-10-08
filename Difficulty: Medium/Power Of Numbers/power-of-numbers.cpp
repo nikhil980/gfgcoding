@@ -10,7 +10,7 @@ class Solution{
     
     long long power(int N,int R)
     {
-        if(R==0)
+      if(R==0)
         {
             return 1;
         }
@@ -26,7 +26,6 @@ class Solution{
             return (temp%1000000007*N)%(1000000007);
         }
     }
-
 };
 
 //{ Driver Code Starts.

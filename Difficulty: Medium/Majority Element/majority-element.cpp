@@ -10,46 +10,23 @@ using namespace std;
 
 class Solution {
   public:
-  
-    int majorityElement(int arr[], int n)
+    int majorityElement(vector<int>& arr) 
     {
-        //we use moore's voting Algorithim
-         //first we find the most occurs element
-           int res =0;
-           int count=1;
-           
-           for(int a=1;a<n;a++)
-           {
-               if(arr[res]==arr[a])
-               {
-                   count++;
-               }
-               else
-               {
-                   count--;
-               }
-               if(count==0)
-               {
-                   res=a;
-                   count=1;
-               }
-           }
-           count=0;
-           for(int a=0;a<n;a++)
-           {
-               if(arr[res]==arr[a])
-               {
-                   count++;
-               }
-           }
-     if(count<=n/2)
-     {
-       return -1;  
-     }
-     else
-     {
-         return arr[res];
-     }
+        unordered_map<int,int>h;
+        
+        for(int i=0;i<arr.size();i++)
+        {
+            h[arr[i]]++;
+        }
+        
+        for(auto i:h)
+        {
+            if(i.second>arr.size()/2)
+            {
+                return i.first;
+            }
+        }
+        return -1;
     }
 };
 
@@ -59,17 +36,19 @@ int main() {
 
     int t;
     cin >> t;
-
+    cin.ignore();
     while (t--) {
         int n;
-        cin >> n;
-        int arr[n];
+        vector<int> a, b;
+        string input;
+        getline(cin, input);
+        stringstream ss(input);
+        int num;
+        while (ss >> num)
+            a.push_back(num);
 
-        for (int i = 0; i < n; i++) {
-            cin >> arr[i];
-        }
         Solution obj;
-        cout << obj.majorityElement(arr, n) << endl;
+        cout << obj.majorityElement(a) << endl;
     }
 
     return 0;

@@ -30,15 +30,16 @@ struct Node
 // Complete this function
 class Solution {
   public:
-    void deleteAlt(struct Node *head)
-    {
+    void deleteAlt(struct Node *head) {
+        // Code here
+        Node *temp=head;
         
-       struct Node*temp=head;
-       while(temp!=NULL&&temp->next!=NULL)
-       {
+        while(temp!=NULL&&temp->next!=NULL)
+        {
            temp->next=temp->next->next;
            temp=temp->next;
-       }
+        }
+        
     }
 };
 

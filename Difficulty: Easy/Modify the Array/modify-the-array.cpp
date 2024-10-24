@@ -8,10 +8,9 @@ using namespace std;
 
 class Solution {
   public:
-    vector<int> modifyAndRearrangeArray(vector<int> &arr) 
-    {
+    vector<int> modifyAndRearrangeArray(vector<int> &arr) {
         // Complete the function
-        vector<int> ans;
+                vector<int> ans;
          int count =0;
         for(int i=0;i<arr.size();i++)
         {
@@ -61,6 +60,7 @@ int main() {
             cout << ans[i] << " ";
         }
         cout << endl;
+        cout << "~" << endl;
     }
     return 0;
 }

@@ -8,15 +8,18 @@ using namespace std;
 //User function template for C++
 class Solution{
 public:	
-	vector<int> kLargest(int arr[], int n, int k) 
-	{
-	     sort(arr,arr+n);
-	     vector<int>ans;
-	     for(int a=n-1;a>n-1-k;a--)
-	     {
-	         ans.push_back(arr[a]);
-	     }
-	     return ans;
+	vector<int> kLargest(int arr[], int n, int k) {
+	    // code here
+	      priority_queue<int>pq(arr,arr+n);
+        vector<int>ans;
+        while(k)
+        {
+            ans.push_back(pq.top());
+            pq.pop();
+            k--;
+        }
+        
+        return ans; 
 	}
 
 };
@@ -39,7 +42,9 @@ int main() {
             cout << x << " ";
         }
         cout << "\n";
-    }
+    
+cout << "~" << "\n";
+}
     return 0;
 }
 

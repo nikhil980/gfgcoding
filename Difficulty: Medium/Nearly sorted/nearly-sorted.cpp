@@ -7,11 +7,9 @@ using namespace std;
 // User function Template for C++
 class Solution {
   public:
-    void nearlySorted(vector<int>& arr, int k)
-    {
+    void nearlySorted(vector<int>& arr, int k) {
         // code
-        
-        priority_queue<int,vector<int>,greater<int>>min;
+         priority_queue<int,vector<int>,greater<int>>min;
         
         int j=0;
         for(int i=0;i<arr.size();i++)
@@ -55,7 +53,7 @@ int main() {
             cout << arr[i] << " ";
         }
         cout << endl;
-        // cout << "~" << endl;
+        cout << "~" << endl;
     }
     return 0;
 }

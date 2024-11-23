@@ -9,23 +9,22 @@ using namespace std;
 class Solution {
   public:
     // Function to find the sum of contiguous subarray with maximum sum.
-    int maxSubarraySum(vector<int> &arr) 
-    {
-        long long res=INT_MIN;
-        long long max_sum=0;
+    int maxSubarraySum(vector<int> &arr) {
+        // code here...
+         int n = arr.size();
         
-        for(int i=0;i<arr.size();i++)
-        {
-            max_sum +=arr[i];
-            res=max(res,max_sum);
-            if(max_sum<=0)
-            {
-                max_sum=0;
-            }
+        int maxSum = INT_MIN, currSum = 0;
+        
+        for(int i = 0; i < n; ++i){
+            currSum += arr[i];
+            maxSum = max(maxSum, currSum);
+            
+            if(currSum < 0) currSum = 0;
         }
-        return res;
+        
+        return maxSum;
     }
-     
+    
 };
 
 //{ Driver Code Starts.

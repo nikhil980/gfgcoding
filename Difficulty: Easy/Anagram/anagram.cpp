@@ -9,7 +9,11 @@ class Solution {
     // Function is to check whether two strings are anagram of each other or not.
     bool areAnagrams(string& s1, string& s2) {
         // Your code here
-        unordered_map<char,int>map;
+        if(s1.length()!=s2.length())
+       {
+           return false;
+       }
+       unordered_map<char,int>map;
         
         for(auto i:s1)
         {

@@ -9,7 +9,7 @@ class Solution {
   public:
     string addBinary(string& s1, string& s2) {
         // your code here
-        int n1=s1.length();
+             int n1=s1.length();
         int n2=s2.length();
         
         string str="";
@@ -111,7 +111,6 @@ class Solution {
         
         reverse(str.begin(),str.end());
         return str;
-        
         
     }
 };

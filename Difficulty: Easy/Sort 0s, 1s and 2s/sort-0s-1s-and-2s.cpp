@@ -6,8 +6,8 @@ using namespace std;
 // } Driver Code Ends
 class Solution {
   public:
-    void sort012(vector<int>& a) 
-    {
+    void sort012(vector<int>& a) {
+        // code here
         int a0=0,a1=0,a2=0;
        int  n=a.size();
         for(int k=0;k<n;k++)
@@ -49,7 +49,6 @@ class Solution {
                 continue;
             }
         }
-       
     }
 };
 
@@ -79,6 +78,7 @@ int main() {
         }
 
         cout << endl;
+        cout << "~" << endl;
     }
     return 0;
 }

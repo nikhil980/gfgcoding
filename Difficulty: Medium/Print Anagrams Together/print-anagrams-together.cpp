@@ -9,37 +9,25 @@ using namespace std;
 // User function Template for C++
 
 class Solution {
-  public:
-    vector<vector<string>> anagrams(vector<string>& arr) {
-        // code here
-     unordered_map<string,vector<int>>map;
-          set<string>hash;
-     int k=0;
-     for(auto i:arr)
-     {
-         string s=i;
-         sort(s.begin(),s.end());
-        map[s].push_back(k);
-        hash.insert(s);
-        k++;
-     }
-       
-      vector<vector<string>> ans;
-           for(auto i:hash)
-         {
-              vector<string>j;
-           
-                 for(int n=0;n<map[i].size();n++)
-                 {
-                    j.push_back(arr[map[i][n]]);
-
-                 }
-            
-             ans.push_back(j);
-         }
-         
-         return ans;
-    
+    public:
+ vector<vector<string>> anagrams(vector<string>& arr) {
+        // Step 1: Initialize a hash map to group anagrams
+        unordered_map<string, vector<string>> mp;
+        
+        // Step 2: Iterate through each word in the array
+        for (int i = 0; i < arr.size(); i++) {
+            string st = arr[i];
+            sort(st.begin(), st.end()); // Sort the word to use it as a key
+            mp[st].push_back(arr[i]);  // Group the original word by the sorted key
+        }
+        
+        // Step 3: Collect all groups of anagrams
+        vector<vector<string>> ans;
+        for (auto i : mp) {
+            ans.push_back(i.second); // Add each group to the result
+        }
+        
+        return ans;
     }
 };
 

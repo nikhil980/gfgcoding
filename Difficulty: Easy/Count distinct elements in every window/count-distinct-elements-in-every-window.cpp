@@ -1,16 +1,16 @@
 //{ Driver Code Starts
+// Initial Template for C++
 #include <bits/stdc++.h>
 using namespace std;
 
 
-
 // } Driver Code Ends
 
-class Solution{
+class Solution {
   public:
-    vector <int> countDistinct (int A[], int n, int k)
-    {
-         unordered_map<int,int>h;
+    vector<int> countDistinct(vector<int> &A, int k) {
+        // code here.
+        unordered_map<int,int>h;
           int x=0;
           while(x<k)
           {
@@ -20,7 +20,7 @@ class Solution{
           vector<int>ans;
           ans.push_back(h.size());
           x=0;
-          for(int i=k;i<n;i++)
+          for(int i=k;i<A.size();i++)
           {
               h[A[x]]--;
               if(h[A[x]]==0)
@@ -33,28 +33,39 @@ class Solution{
               x++;
           }
        return ans;
+        
     }
 };
 
 //{ Driver Code Starts.
-int main()
-{
+
+int main() {
+
     int t;
     cin >> t;
-    while (t--)
-    {
-
-        int n, k;
-        cin >> n >> k;
-        int a[n];
-        for (int i = 0; i < n; i++) 
-        	cin >> a[i];
+    cin.ignore();
+    while (t--) {
+        vector<int> arr;
+        string input;
+        getline(cin, input);
+        stringstream ss(input);
+        int number;
+        while (ss >> number) {
+            arr.push_back(number);
+        }
+        string ks;
+        getline(cin, ks);
+        int k = stoi(ks);
         Solution obj;
-        vector <int> result = obj.countDistinct(a, n, k);
-        for (int i : result) 
-        	cout << i << " ";
+        vector<int> res = obj.countDistinct(arr, k);
+        for (auto it : res)
+            cout << it << " ";
         cout << endl;
+        cout << "~"
+             << "\n";
     }
+
     return 0;
 }
+
 // } Driver Code Ends

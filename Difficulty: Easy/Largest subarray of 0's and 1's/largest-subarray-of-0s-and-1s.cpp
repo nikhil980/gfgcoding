@@ -4,19 +4,12 @@ using namespace std;
 
 
 // } Driver Code Ends
-/*You are required to complete this method*/
-
-// arr[] : the input array containing 0s and 1s
-// N : size of the input array
-
-// return the maximum length of the subarray
-// with equal 0s and 1s
-class Solution{
+class Solution {
   public:
-    int maxLen(int arr[], int N)
-    {
-    
-        for(int i=0;i<N;i++)
+    int maxLen(vector<int> &arr) {
+        // Your code here
+        int N=arr.size();
+           for(int i=0;i<N;i++)
         {
            if(arr[i]==0)
            {
@@ -52,21 +45,30 @@ class Solution{
 
 //{ Driver Code Starts.
 
-int main()
-{
-    // your code goes here
+int main() {
     int T;
     cin >> T;
-    while (T--)
-    {
-        int n;
-        cin >> n;
-        int a[n];
-        for (int i = 0; i < n; i++)
-            cin >> a[i];
+    cin.ignore(); // To ignore the newline character after reading T
+
+    while (T--) {
+        string line;
+        getline(cin, line); // Read the whole line for the array
+
+        // Convert the line into an array of integers
+        stringstream ss(line);
+        vector<int> a;
+        int num;
+        while (ss >> num) {
+            a.push_back(num);
+        }
+
+        // Create the solution object
         Solution obj;
-        cout << obj.maxLen(a, n) << endl;
+
+        // Call the maxLen function and print the result
+        cout << obj.maxLen(a) << endl;
     }
+
     return 0;
 }
 // } Driver Code Ends

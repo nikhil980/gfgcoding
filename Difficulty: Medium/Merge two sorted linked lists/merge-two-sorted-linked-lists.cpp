@@ -18,13 +18,27 @@ void printList(struct Node *head) {
         cout << temp->data << ' ';
         temp = temp->next;
     }
-    cout << '\n';
+    cout << "\n~\n";
+}
+
+Node *insertSorted(Node *head, int data) {
+    Node *new_node = new Node(data);
+    if (!head || head->data >= data) {
+        new_node->next = head;
+        return new_node;
+    }
+
+    Node *current = head;
+    while (current->next && current->next->data < data) {
+        current = current->next;
+    }
+    new_node->next = current->next;
+    current->next = new_node;
+    return head;
 }
 
 
 // } Driver Code Ends
-
-
 /* Link list Node
 struct Node {
   int data;
@@ -36,12 +50,11 @@ struct Node {
   }
 };
 */
-// Function to merge two sorted linked list.
 class Solution {
   public:
-    Node* sortedMerge(Node* head1, Node* head2) 
-    {
-        struct Node *new_node;
+    Node* sortedMerge(Node* head1, Node* head2) {
+        // code here
+         struct Node *new_node;
         
          if(head1->data>=head2->data)
              {
@@ -96,34 +109,19 @@ int main() {
     cin.ignore();
     while (T--) {
         int n1, n2, tmp;
-        Node *head1 = nullptr, *tail1 = nullptr;
-        Node *head2 = nullptr, *tail2 = nullptr;
+        Node *head1 = nullptr, *head2 = nullptr;
         string input1, input2;
 
         getline(cin, input1); // Read the entire line for the LL1 elements
         stringstream ss1(input1);
         while (ss1 >> tmp) {
-            Node *new_node = new Node(tmp);
-            if (head1 == nullptr) {
-                head1 = new_node;
-                tail1 = new_node;
-            } else {
-                tail1->next = new_node;
-                tail1 = new_node;
-            }
+            head1 = insertSorted(head1, tmp);
         }
 
         getline(cin, input2); // Read the entire line for the LL2 elements
         stringstream ss2(input2);
         while (ss2 >> tmp) {
-            Node *new_node = new Node(tmp);
-            if (head2 == nullptr) {
-                head2 = new_node;
-                tail2 = new_node;
-            } else {
-                tail2->next = new_node;
-                tail2 = new_node;
-            }
+            head2 = insertSorted(head2, tmp);
         }
 
         Solution obj;

@@ -67,77 +67,101 @@ struct Node {
 */
 
 class Solution {
-  public:
-    // Function to add two numbers represented by linked list.
-    Node* addTwoLists(Node* num1, Node* num2) 
-    {
-         struct Node * temp=NULL;
-         struct Node * temp1=num1;
-         struct Node * temp2;
-         
-           while(temp1!=NULL)
-           {  
-             temp2=temp1;
-             temp1=temp1->next;
-             temp2->next=temp;
-             temp=temp2;
-          
-           }
-           num1=temp2;
-           temp1=num2;
-           temp=NULL;
-            while(temp1!=NULL)
-           {  
-             temp2=temp1;
-             temp1=temp1->next;
-             temp2->next=temp;
-             temp=temp2;
-          
-           }
-           num2=temp2;
-           
-            
-            temp1=num1;
-            temp2=num2;
-            temp=NULL;
-            int carry=0;
-              while(temp1!=NULL&&temp2!=NULL)
-              {
-                  int k=temp1->data+temp2->data;
-                 struct Node *new_node=new Node((k+carry)%10);
-                 new_node->next=temp;
-                 temp=new_node;
-                   carry=(k+carry)/10;
-                    temp1=temp1->next;
-                    temp2=temp2->next;
-              }
-              while(temp1!=NULL)
-              {
-                  int k=temp1->data;
-                 struct Node *new_node=new Node((k+carry)%10);
-                 new_node->next=temp;
-                 temp=new_node;
-                   carry=(k+carry)/10;
-                    temp1=temp1->next;
-              }
-               while(temp2!=NULL)
-              {
-                  int k=temp2->data;
-                 struct Node *new_node=new Node((k+carry)%10);
-                 new_node->next=temp;
-                 temp=new_node;
-                   carry=(k+carry)/10;
-                    temp2=temp2->next;
-              }
-             
-              if(carry!=0)
-              {
-                 struct Node *new_node=new Node(carry);
-                 new_node->next=temp;
-                 temp=new_node;
-              }     
+    private:
+    Node* reverse(Node* head){
+        Node* curr = head;
+        Node* nxt = NULL;
+        Node* prev = NULL;
         
-         return temp;
+        
+        while(curr){
+            nxt =curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = nxt;
+        }
+        return prev;
+    }
+  public:
+    Node* addTwoLists(Node* num1, Node* num2) {
+
+
+        int res = 0, i = 0;
+
+
+        num1 = reverse(num1);
+        num2 = reverse(num2);
+
+
+        Node* head1 = num1;
+        Node* head2 = num2;
+
+
+        Node* dummy = new Node(-1);
+        Node* dummyHead = dummy;
+
+
+        int carry = 0;
+
+
+        while(head1 && head2){
+
+
+            int sum = head1->data + head2->data + carry;
+            carry = sum/10;
+
+            dummyHead -> next = new Node(sum%10);
+            dummyHead = dummyHead->next;
+            
+            head1 = head1->next;
+            head2 = head2->next;
+
+
+        }
+        while(head1){
+
+
+            int sum = head1->data + carry;
+            carry = sum/10;
+
+            dummyHead -> next = new Node(sum%10);
+            dummyHead = dummyHead->next;
+            
+            head1 = head1->next;
+            
+        }
+        
+         while(head2){
+
+
+            int sum = head2->data + carry;
+            carry = sum/10;
+
+            dummyHead -> next = new Node(sum%10);
+            dummyHead = dummyHead->next;
+           
+            head2 = head2->next;
+            
+        }
+        if(carry){
+            
+
+            dummyHead -> next = new Node(carry%10);
+            dummyHead = dummyHead->next;
+            
+        }
+        
+        Node* newHead = dummy->next ;
+        delete dummy;
+        newHead = reverse(newHead);
+        
+        // to avoid zero in starting
+
+
+        while(newHead->data ==0){
+            newHead = newHead->next;
+        }
+        return newHead;
     }
 };
 
@@ -155,6 +179,7 @@ int main() {
         Solution ob;
         Node* res = ob.addTwoLists(num1, num2);
         printList(res);
+        cout << "~" << endl;
     }
     return 0;
 }

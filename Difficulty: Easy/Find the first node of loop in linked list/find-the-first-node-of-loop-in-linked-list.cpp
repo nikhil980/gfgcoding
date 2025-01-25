@@ -46,10 +46,9 @@ void loopHere(Node *head, Node *tail, int position) {
 */
 class Solution {
   public:
-    // Function to find first node if the linked list has a loop.
     Node* findFirstNode(Node* head) {
         // your code here
-        Node *fast=head;
+         Node *fast=head;
         Node *slow=head;
         while(fast&&fast->next&&slow)
         {
@@ -87,6 +86,7 @@ int main() {
         int k;
         cin >> k;
         cin.ignore();
+        assert(k <= arr.size());
         struct Node *head = new Node(arr[0]);
         struct Node *tail = head;
         for (int i = 1; i < arr.size(); ++i) {

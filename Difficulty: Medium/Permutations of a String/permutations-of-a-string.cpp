@@ -6,7 +6,7 @@ using namespace std;
 // } Driver Code Ends
 class Solution {
   public:
-    vector<string>ans;
+  vector<string>ans;
     
     void fun(string &ptr,int i)
     {

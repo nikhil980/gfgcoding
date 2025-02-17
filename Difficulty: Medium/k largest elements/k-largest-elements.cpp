@@ -1,51 +1,50 @@
 //{ Driver Code Starts
 #include <bits/stdc++.h>
-
 using namespace std;
 
 
 // } Driver Code Ends
-//User function template for C++
-class Solution{
-public:	
-	vector<int> kLargest(int arr[], int n, int k) {
-	    // code here
-	      priority_queue<int>pq(arr,arr+n);
-        vector<int>ans;
-        while(k)
-        {
-            ans.push_back(pq.top());
-            pq.pop();
-            k--;
-        }
-        
-        return ans; 
-	}
-
+class Solution {
+  public:
+    vector<int> kLargest(vector<int>& arr, int k) {
+        // Your code here
+         sort(arr.begin(),arr.end());
+         int n=arr.size();
+	     vector<int>ans;
+	     for(int a=n-1;a>n-1-k;a--)
+	     {
+	         ans.push_back(arr[a]);
+	     }
+	     return ans;
+    }
 };
 
 //{ Driver Code Starts.
-
 int main() {
-    int t;
-    cin >> t;
+    string ts;
+    getline(cin, ts);
+    int t = stoi(ts);
     while (t--) {
-        int n, k;
-        cin >> n >> k;
-        int arr[n];
-        for (int i = 0; i < n; i++) {
-            cin >> arr[i];
+
+        vector<int> arr;
+        string input;
+        getline(cin, input);
+        stringstream ss(input);
+        int number;
+        while (ss >> number) {
+            arr.push_back(number);
         }
+        string ks;
+        getline(cin, ks);
+        int k = stoi(ks);
         Solution ob;
-        auto ans = ob.kLargest(arr, n, k);
-        for (auto x : ans) {
-            cout << x << " ";
+        vector<int> ans = ob.kLargest(arr, k);
+        for (auto it : ans) {
+            cout << it << " ";
         }
-        cout << "\n";
-    
-cout << "~" << "\n";
-}
+        cout << endl;
+        cout << "~" << endl;
+    }
     return 0;
 }
-
 // } Driver Code Ends

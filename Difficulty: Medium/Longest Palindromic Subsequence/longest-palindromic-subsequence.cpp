@@ -1,11 +1,12 @@
 //{ Driver Code Starts
-//Initial template for C++
+// Initial template for C++
 
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 
 // } Driver Code Ends
+
 //User function Template for C++
 
 class Solution{
@@ -42,20 +43,22 @@ class Solution{
     }
 };
 
+
+
 //{ Driver Code Starts.
 
-int32_t main()
-{
-    int t; cin >> t;
-    while (t--)
-    {
-        string s; cin >> s;
+int32_t main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        string s;
+        cin >> s;
         Solution ob;
         cout << ob.longestPalinSubseq(s) << endl;
-    
-cout << "~" << "\n";
+
+        cout << "~"
+             << "\n";
+    }
 }
-}
-// Contributed By: Pranay Bansal
 
 // } Driver Code Ends

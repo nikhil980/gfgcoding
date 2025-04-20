@@ -4,24 +4,26 @@ using namespace std;
 
 
 // } Driver Code Ends
+
 // User function Template for C++
 class Solution {
   public:
     int findDuplicate(vector<int>& arr) {
         // code here
-        unordered_set<int>h;
+        unordered_set<int>s;
         for(auto i:arr)
         {
-            if(h.find(i)!=h.end())
-            {
+            if(s.find(i)==s.end()){
+            s.insert(i);
+            }
+            else{
                 return i;
             }
-            h.insert(i);
             
         }
-        return arr[0];
     }
 };
+
 
 //{ Driver Code Starts.
 
@@ -47,6 +49,7 @@ int main() {
         int result = ob.findDuplicate(arr);
 
         cout << (result) << endl;
+        cout << "~" << endl;
     }
     return 0;
 }
